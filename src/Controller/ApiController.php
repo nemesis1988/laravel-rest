@@ -6,6 +6,7 @@ use Nemesis\LaravelRest\Transformers\Transformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Controller;
 
 /**
  * Базовый контроллер для API
