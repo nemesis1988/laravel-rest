@@ -3,7 +3,6 @@
     "description": "REST actions for controllers",
     "type": "library",
     "version": "1.0.0",
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Bondarenko Kirill",
