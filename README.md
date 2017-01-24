@@ -18,9 +18,9 @@ For Laravel >=5.3
 
 ## Using
 
-Extend You controllers from Nemesis\Rest\Controllers\ApiController and use action traits for him/
+Extend You controllers from Nemesis\LaravelRest\Controllers\ApiController and use action traits for him/
 
-In Nemesis\Rest\Traits\Actions\* isset CRUD operations for controller
+In Nemesis\LaravelRest\Traits\Actions\* isset CRUD operations for controller
 
 You need to set $modelClass variable in controller and using action traits
 
