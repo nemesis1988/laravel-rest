@@ -1,5 +1,5 @@
 <?php
-namespace Nemesis\Rest\Traits;
+namespace Nemesis\LaravelRest\Traits;
 
 use App\Http\Controllers\ApiController;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

@@ -1,5 +1,5 @@
 <?php
-namespace Nemesis\Rest\Traits\Actions;
+namespace Nemesis\LaravelRest\Traits\Actions;
 
 use Illuminate\Http\Response;
 
@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
  * Delete entity
  *
  * Class DestroyAction
- * @package Nemesis\Rest\Traits\Actions
+ * @package Nemesis\LaravelRest\Traits\Actions
  *
  * @version 1.0.0
  * @author Bondarenko Kirill <bondarenko.kirill@gmail.com>

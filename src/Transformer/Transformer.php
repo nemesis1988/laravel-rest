@@ -1,5 +1,5 @@
 <?php
-namespace Nemesis\Rest\Transformers;
+namespace Nemesis\LaravelRest\Transformers;
 
 use Illuminate\Database\Eloquent\Model;
 

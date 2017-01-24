@@ -1,5 +1,5 @@
 <?php
-namespace Nemesis\Rest\Traits\Actions;
+namespace Nemesis\LaravelRest\Traits\Actions;
 
 use Illuminate\Http\Request;
 
@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
  * Get entity
  *
  * Class ShowAction
- * @package Nemesis\Rest\Traits\Actions
+ * @package Nemesis\LaravelRest\Traits\Actions
  *
  * @version 1.0.0
  * @author Bondarenko Kirill <bondarenko.kirill@gmail.com>

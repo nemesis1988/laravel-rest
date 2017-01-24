@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Nemesis\\Rest\\": "src/"
+            "Nemesis\\LaravelRest\\": "src/"
         }
     }
 }

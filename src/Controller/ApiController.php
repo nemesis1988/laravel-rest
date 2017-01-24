@@ -1,8 +1,8 @@
 <?php
-namespace Nemesis\Rest\Controllers;
+namespace Nemesis\LaravelRest\Controllers;
 
-use Nemesis\Rest\Traits\ItemsService;
-use Nemesis\Rest\Transformers\Transformer;
+use Nemesis\LaravelRest\Traits\ItemsService;
+use Nemesis\LaravelRest\Transformers\Transformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
