@@ -2,6 +2,7 @@
 namespace Nemesis\LaravelRest\Traits\Actions;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /**
  * Get entity
@@ -21,10 +22,6 @@ trait ShowAction
      */
     public function show($id, Request $request)
     {
-        if(isset($id['primaryKey'])) {
-            $id = $id->$id['primaryKey'];
-        }
-
         $item = $this->getItem($id, $request);
         if ($item) {
             return $this->respond($item);

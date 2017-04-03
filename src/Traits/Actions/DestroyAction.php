@@ -20,10 +20,6 @@ trait DestroyAction
      */
     public function destroy($id)
     {
-        if(isset($id['primaryKey'])) {
-            $id = $id->$id['primaryKey'];
-        }
-
         $model = $this->getItem($id, null, null, false);
         if ( ! $model) {
             return $this->respondNotFound();

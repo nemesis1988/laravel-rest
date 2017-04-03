@@ -28,7 +28,7 @@ trait ItemsService
     {
         $model = $this->modelClass;
 
-        $query = $model::setFilterAndRelationsAndSort($request, $params);
+        $query = $this->isModelUseFilter() ? $model::setFilterAndRelationsAndSort($request, $params) : new $model;
 
         if ($this->transformer) {
             $transformer = new $this->transformer;
@@ -52,7 +52,9 @@ trait ItemsService
 
         // небольшой костыль
         try {
-            $model = $model::setFilterAndRelationsAndSort($request, $params)->findOrFail($id);
+            $model = $this->isModelUseFilter() ?
+                $model::setFilterAndRelationsAndSort($request, $params)->findOrFail($id) :
+                $model::findOrFail($id);
         } catch (ModelNotFoundException $e) {
             return false;
         }
@@ -93,5 +95,15 @@ trait ItemsService
     public function getPaginate(Request $request = null)
     {
         return ($request && $request->has('limit')) ? $request->get('limit') : ApiController::DEFAULT_PAGINATE;
+    }
+
+    /**
+     * check used filter in model
+     *
+     * @return bool
+     */
+    protected function isModelUseFilter()
+    {
+        return method_exists($this->modelClass, 'scopeSetFilterAndRelationsAndSort');
     }
 }
