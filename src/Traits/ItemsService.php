@@ -18,6 +18,17 @@ use Illuminate\Support\Facades\DB;
 trait ItemsService
 {
     /**
+     * Условия фильтрации по умолчанию
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    protected function baseQueryFilter($query)
+    {
+        return $query;
+    }
+
+    /**
      * Получение коллекций
      *
      * @param Request $request
@@ -29,7 +40,7 @@ trait ItemsService
         $model = $this->modelClass;
 
         $query = $this->isModelUseFilter() ? $model::setFilterAndRelationsAndSort($request, $params) : new $model;
-
+        $query = $this->baseQueryFilter($query);
         if ($this->transformer) {
             $transformer = new $this->transformer;
             $items = $transformer->transformCollection($query->get(), $this->getRelations($request));
@@ -48,13 +59,17 @@ trait ItemsService
      */
     public function getItem($id, Request $request = null, $params = [], $needTransform = true)
     {
-        $model = $this->modelClass;
+        $modelClass = $this->modelClass;
 
         // небольшой костыль
         try {
-            $model = $this->isModelUseFilter() ?
-                $model::setFilterAndRelationsAndSort($request, $params)->findOrFail($id) :
-                $model::findOrFail($id);
+            $query = $this->isModelUseFilter() ?
+                $modelClass::setFilterAndRelationsAndSort($request, $params) :
+                new $modelClass;
+
+            $query = $this->baseQueryFilter($query);
+
+            $model = $query->findOrFail($id);
         } catch (ModelNotFoundException $e) {
             return false;
         }
