@@ -42,7 +42,7 @@ If you need all action, use GeneralActions
 if you need filtering data by default conditions, use baseQueryFilter method on you controller:
 
 ```php
-    protected function baseQueryFilter($query)
+    public function baseQueryFilter($query)
     {
         return $query->where('owner', Auth::user()->id);
     }
