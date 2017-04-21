@@ -23,7 +23,7 @@ trait ItemsService
      * @param Builder $query
      * @return Builder
      */
-    protected function baseQueryFilter($query)
+    public function baseQueryFilter($query)
     {
         return $query;
     }
