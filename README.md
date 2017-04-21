@@ -35,6 +35,21 @@ You need to set $modelClass variable in controller and using action traits
 
 If any of the methods that do not need it, just remove it
 
+If you need all action, use GeneralActions
+
+## baseQueryFilter
+
+if you need filtering data by default conditions, use baseQueryFilter method on you controller:
+
+```php
+    protected function baseQueryFilter($query)
+    {
+        return $query->where('owner', Auth::user()->id);
+    }
+```
+
+
+
 
 ## Filter using
 
