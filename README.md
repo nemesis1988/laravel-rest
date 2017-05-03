@@ -49,6 +49,10 @@ if you need filtering data by default conditions, use baseQueryFilter method on 
 ```
 
 
+## default paginate
+
+ItemService trait have static variable $defaultPaginate. You will change it in your controllers  
+
 
 
 ## Filter using

@@ -21,8 +21,6 @@ class ApiController extends Controller
 {
     use ItemsService;
 
-    const DEFAULT_PAGINATE = 10;
-
     /**
      * Main data array for all views.
      *
@@ -180,5 +178,4 @@ class ApiController extends Controller
 
         abort(404);
     }
-
 }

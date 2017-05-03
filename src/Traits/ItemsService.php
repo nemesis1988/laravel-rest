@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\DB;
 trait ItemsService
 {
     /**
+     * @var int
+     */
+    protected static $defaultPaginate = 10;
+
+    /**
      * Условия фильтрации по умолчанию
      *
      * @param Builder $query
@@ -33,22 +38,28 @@ trait ItemsService
      *
      * @param Request $request
      * @param array $params параметры для фильтра
+     * @param bool $paginate
      * @return
      */
-    public function getItems(Request $request = null, $params = [])
+    public function getItems(Request $request = null, $params = [], $paginate = true)
     {
         $model = $this->modelClass;
 
         $query = $this->isModelUseFilter() ? $model::setFilterAndRelationsAndSort($request, $params) : new $model;
         $query = $this->baseQueryFilter($query);
+
+        $items = $query->paginate($this->getPaginate($request));
+
+        $collection = $items->toArray();
+
         if ($this->transformer) {
             $transformer = new $this->transformer;
-            $items = $transformer->transformCollection($query->get(), $this->getRelations($request));
+            $collection['data'] = $transformer->transformCollection($collection['data'], $this->getRelations($request));
         } else {
-            $items = $query->get();
+            $collection['data'] = $items->items();
         }
 
-        return $items;
+        return $collection;
     }
 
     /**
@@ -109,7 +120,7 @@ trait ItemsService
      */
     public function getPaginate(Request $request = null)
     {
-        return ($request && $request->has('limit')) ? $request->get('limit') : ApiController::DEFAULT_PAGINATE;
+        return ($request && $request->has('limit')) ? $request->get('limit') : self::$defaultPaginate;
     }
 
     /**
