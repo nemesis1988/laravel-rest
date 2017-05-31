@@ -20,7 +20,9 @@ trait DestroyAction
      */
     public function destroy($id)
     {
-        $model = $this->getItem($id, null, null, false);
+        $request = $this->getRequestObject();
+
+        $model = $this->getItem($id, $request, [], false);
         if ( ! $model) {
             return $this->respondNotFound();
         }
