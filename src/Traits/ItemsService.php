@@ -54,7 +54,7 @@ trait ItemsService
 
         if ($this->transformer) {
             $transformer = new $this->transformer;
-            $collection['data'] = $transformer->transformCollection($collection['data'], $this->getRelations($request));
+            $collection['data'] = $transformer->transformCollection($items->items(), $this->getRelations($request));
         } else {
             $collection['data'] = $items->items();
         }

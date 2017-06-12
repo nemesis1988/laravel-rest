@@ -2,7 +2,7 @@
     "name": "nemesis/laravel-rest",
     "description": "REST actions for controllers",
     "type": "library",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "authors": [
         {
             "name": "Bondarenko Kirill",
