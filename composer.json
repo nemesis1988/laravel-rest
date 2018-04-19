@@ -2,7 +2,7 @@
     "name": "nemesis/laravel-rest",
     "description": "REST actions for controllers",
     "type": "library",
-    "version": "2.0.2",
+    "version": "3.0.0",
     "authors": [
         {
             "name": "Bondarenko Kirill",
@@ -11,7 +11,7 @@
     ],
     "require": {
         "laravel/framework": "^5.3.0",
-        "nemesis/laravel-filter-and-sorting": "^3.1.0"
+        "nemesis/laravel-filter-and-sorting": ">=3.1.0"
     },
     "autoload": {
         "psr-4": {
