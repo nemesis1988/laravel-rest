@@ -120,7 +120,7 @@ trait ItemsService
      */
     public function getPaginate(Request $request = null)
     {
-        return ($request && $request->has('limit')) ? $request->get('limit') : self::$defaultPaginate;
+        return ($request && $request->has('limit')) ? $request->get('limit') : static::$defaultPaginate;
     }
 
     /**
